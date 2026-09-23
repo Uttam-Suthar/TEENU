@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bill of Supply Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+ <div class="toolbar no-print">
+  <div>
+    <strong>Bill of Supply Generator</strong>
+    <span class="hint">Edit any field directly on the page, then download A4 PDF.</span>
+  </div>
+  <div class="actions">
+    <button id="addItemBtn" class="secondary">+ Add Item</button>
+    <button id="printBtn" class="secondary">Print</button>
+    <button id="pdfBtn" class="primary">Download PDF</button>
+  </div>
+  </div>
+
+  <main id="invoice" class="page" contenteditable="false">
+    <div class="title">Bill of Supply</div>
+
+    <section class="header-box">
+      <div class="company-row">
+        <div class="company-left">
+          <div class="company-name editable" contenteditable="true">HINDUSTAN TYRES</div>
+          <div class="small editable" contenteditable="true">BILD SURVEY No.344/2A, NEW SURVEY NO.344/1A1C, Bangalore
+            Highway road, Meyajurkuppam, chennai</div>
+          <div class="two-col">
+            <div class="small editable" contenteditable="true">Phone: 9940612502</div>
+            <div class="small editable" contenteditable="true">GSTIN : 33AAMHH9102L1ZA</div>
+          </div>
+        </div>
+        <div class="company-right">
+          <div class="small editable" contenteditable="true">Email : admin@hindustantyres.co.in</div>
+          <div class="small editable" contenteditable="true">State: 33-Tamil Nadu</div>
+        </div>
+      </div>
+
+      <div class="bill-row">
+        <div class="bill-to">
+          <div class="label">Bill To:</div>
+          <div class="editable large-field" contenteditable="true">RFR</div>
+        </div>
+        <div class="invoice-details">
+          <div class="label">Invoice Details:</div>
+          <div class="details-grid">
+            <div class="editable" contenteditable="true">Invoice No: <span id="invoiceNo">4083</span></div>
+            <div class="editable" contenteditable="true">Vehicle No: <span id="vehicleNo">NL01AC8565</span></div>
+            <div class="editable" contenteditable="true">Date: <span id="invoiceDate">09/09/2026</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="items-section">
+      <table id="itemsTable">
+        <thead>
+          <tr>
+            <th class="num">#</th>
+            <th>ITEM NAME</th>
+            <th class="qty">Quantity</th>
+            <th class="unit">Unit</th>
+            <th class="price">Price/ Unit(₹)</th>
+            <th class="amount">Amount(₹)</th>
+          </tr>
+        </thead>
+        <tbody id="itemsBody">
+          <tr class="item-row">
+            <td class="center item-no">1</td>
+            <td class="editable" contenteditable="true">WHEEL ALIGNMENT</td>
+            <td class="editable center qty-cell" contenteditable="true">1</td>
+            <td class="editable center" contenteditable="true">AXLE</td>
+            <td class="editable right price-cell" contenteditable="true">800.00</td>
+            <td class="right amount-cell">800.00</td>
+          </tr>
+          <tr class="total-row">
+            <td></td>
+            <td class="bold">Total</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td id="itemsTotal" class="right bold">800.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="summary">
+        <div class="summary-row"><span>Sub Total</span><span id="subtotal">₹ 800.00</span></div>
+        <div class="summary-row"><span>Total</span><span id="grandTotal">₹ 800.00</span></div>
+        <div class="summary-row words"><span>Invoice Amount in Words:</span><span id="amountWords" class="editable"
+            contenteditable="true">Eight Hundred Rupees Only</span></div>
+        <div class="summary-row"><span>Received</span><span class="editable right" contenteditable="true"
+            id="received">₹ 0.00</span></div>
+        <div class="summary-row"><span>Balance</span><span id="balance">₹ 800.00</span></div>
+      </div>
+    </section>
+
+    <section class="terms">
+      <div class="label">Terms &amp; Conditions:</div>
+      <div class="editable terms-text" contenteditable="true">Thanks for doing business with us!</div>
+    </section>
+
+    <section class="signature">
+      <div class="sign-box">
+        <div class="label">For HINDUSTAN TYRES:</div>
+        <div class="sign-space"></div>
+        <div class="authorized">Authorized Signatory</div>
+      </div>
+    </section>
+  </main>
+
+  <div class="toast no-print" id="toast"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
